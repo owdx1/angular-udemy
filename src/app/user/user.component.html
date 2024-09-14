@@ -1,0 +1,13 @@
+<div class="w-full flex items-center p-1 hover:bg-gray-700 hover:text-white transition">
+  <!-- event binding with (), like ((click)="") -->
+  <button class="w-full flex items-center justify-between px-4" (click)="handleClick()">
+    <!-- propert binding to a tag attribute, [src]="" -->
+    <img 
+      [src]="imagePath"
+      [alt]="user.id"
+      class="rounded-full w-12"
+    />
+    <!-- string interpolation, double curly braces {{}} -->
+    <p>{{user.name}}</p>
+  </button>
+</div>  

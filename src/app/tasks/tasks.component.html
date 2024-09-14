@@ -1,0 +1,42 @@
+@if (addTaskFormOpen && user) {
+  <app-add-task-form (cancel)="addTaskFormOpen = false" (addTask)="onTaskAdd($event)" [username]="user.name"/>
+}
+
+<section class="w-full border rounded h-full flex flex-col gap-4 p-2"> 
+  @if (user) {
+    <header class="w-full h-20 border rounded flex items-center justify-between px-4">
+      <div>
+        <p><span class="font-semibold italic">{{user.name}}</span>'s tasks.</p>
+      </div>
+      <div>
+        <button class="rounded p-2 m-2 bg-slate-700 text-white hover:bg-white hover:text-black transition" (click)="addTaskFormOpen = true">
+          Add Task +
+        </button>
+      </div>   
+    </header>
+    <div class="w-full h-full">
+      @for (task of user.tasks; track $index) {
+        <app-task [task]="task" (delete)="onTaskDelete($event)" />
+      }
+    </div>
+  }
+
+  @else {
+    <div class="w-full h-full flex flex-col gap-4 items-center justify-center">
+      <img
+        src="taskNotFound.svg"
+        alt="tast-not-found"
+        class="w-12 h-12 animate-pulse"
+      />
+      <p>Select a user to see their tasks!</p>
+    </div>
+  }
+
+</section>
+
+
+
+
+
+
+

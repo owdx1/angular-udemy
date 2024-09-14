@@ -1,0 +1,17 @@
+<div class="w-full h-20 flex flex-col gap-1 border-b border-l mt-4 rounded shadow-sm p-2 relative">
+  <div class="absolute w-6 h-6 flex items-center justify-center -top-4 -left-0 bg-red-500 p-1 rounded-full text-white">
+    <button (click)="handleDeleteTask()">X</button>
+  </div>
+  <div class="w-full flex items-center justify-between">
+    <p class="font-semibold" [ngClass]="{'line-through': task.isCompleted}">{{task.title}} {{task.id}}</p>
+    @if (task.isCompleted) {
+      <p class="p-2 shadow-sm"> completed <span class="text-green-500">✓</span></p>
+    }
+    @else {
+      <button class="rounded bg-slate-700 text-white hover:bg-slate-600 transition p-2" (click)="handleCompleteTask()">
+        Complete Task
+      </button>
+    }
+  </div>
+  <p>{{task.desc}}</p>
+</div>
